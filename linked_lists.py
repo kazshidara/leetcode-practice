@@ -25,3 +25,33 @@ class Solution:
 
 ################################################################################
 
+#2.   Find Intersection of 2 Linked Lists 
+
+# Definition for singly-linked list.
+class ListNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+class Solution(object):
+    def getIntersectionNode(self, headA, headB):
+        """
+        :type head1, head1: ListNode
+        :rtype: ListNode
+        """
+        # Have two pointers that move on to the next node with each loop
+
+        A = headA
+        B = headB
+        
+        # Keeps looping until the pointers reach the same node or NONE (end of LL)
+        while A != B:
+            if A is not None:
+                A = A.next
+            else:               # If pointer A reaches end of LL-A, it points to head of LL-B
+                A = headB
+            if B is not None:
+                B = B.next
+            else:               # Pointers switch head and iterate a second time 
+                B = headA 
+        return A
