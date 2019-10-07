@@ -55,3 +55,10 @@ class Solution(object):
             else:               # Pointers switch head and iterate a second time 
                 B = headA 
         return A
+
+################################################################################
+
+#3.  Circular Linked Lists
+
+
+

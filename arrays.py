@@ -29,3 +29,51 @@ def find_duplicates(nums):
 ################################################################################
 
 
+#  3. Single Number 
+
+# Given a non-empty array of integers, every element appears twice except for one. 
+# Find that single one. Your algorithm should have a linear runtime complexity. 
+# Could you implement it without using extra memory?
+
+def find_single(nums):
+
+    num_dict = {}
+    for num in nums:
+        num_dict[num] = num_dict.get(num, 0) + 1
+    for key, value in num_dict.items():
+        if value == 1:
+            return key
+
+################################################################################
+
+
+#  4. Move Zeroes to end of the array 
+
+# Given a non-empty array of integers, write fcn to move all 0's to end of array 
+# You must do this in-place without making a copy of the array.
+# Minimize the total number of operations.
+
+def move_zeros(nums):
+
+    zeros = []
+    non = []
+        
+    for num in nums:
+        if num == 0:
+            zeros.append(0)
+        else:
+            non.append(num)
+    return non + zeros
+
+#  To change the list in place, use pointers!!
+
+def move_zeros(nums):
+
+    zero = 0
+
+    for i, num in enumerate(nums):
+        if num != 0:
+            nums[i], nums[zero] = nums[zero], nums[i]
+            zero += 1
+
+
