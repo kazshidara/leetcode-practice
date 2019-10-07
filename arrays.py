@@ -77,3 +77,24 @@ def move_zeros(nums):
             zero += 1
 
 
+################################################################################
+
+
+# 5. Majority Element
+
+# Given an array of size n, find the majority element. The majority element 
+# is the element that appears more than ⌊ n/2 ⌋ times.
+
+def get_majority(nums):
+
+    new_dict = {}
+
+    for num in nums:
+        new_dict[num] = new_dict.get(num, 0) + 1
+    for key, value in new_dict.items():
+        if value > (len(nums)/2):
+            return key
+
+################################################################################
+
+
