@@ -106,21 +106,30 @@ def get_majority(nums):
 # Could you do it without extra space and in O(n) runtime? You may assume the returned list does not count as extra space.
 
 def findDisappearedNumbers(nums):
+    dict = {}
+    list = []
+    for i in range(min(nums), max(nums)+1):
+        dict[i] = dict.get(i, 0)
+    for num in nums:
+        dict[num] = dict.get(num, 0) + 1
+    
+    for key, value in dict.items():
+        if value == 0:
+            list.append(key)
+    return list
+
+# FOR BETTER SPACE COMPLEXITY:::
+
+def fcn(nums):
+
     for i in range(len(nums)):
-        # print(i)
         index = abs(nums[i]) - 1
-        # print(index)
         nums[index] = - abs(nums[index])
-        print(nums[index])
 
     return [i + 1 for i in range(len(nums)) if nums[i] > 0]
 
+################################################################################
 
 
 
 
-
-
-
-
-print(findDisappearedNumbers([4,3,2,7,8,2,3,1]))

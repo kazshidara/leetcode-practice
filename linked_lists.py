@@ -58,7 +58,33 @@ class Solution(object):
 
 ################################################################################
 
-#3.  Circular Linked Lists
+#3.  Linked List Cycle 
 
+# Given a linked list, determine if it has a cycle in it.
+
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    def hasCycle(self, head):
+        """
+        :type head: ListNode
+        :rtype: bool
+        """
+        slow = head
+        fast = head
+        
+        while slow and fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next 
+            
+            # b/c pointers are 2 positions apart, if the linked list is cyclic, both pointers will meet 
+            if slow == fast:
+                return True   
+                
+        return False 
 
 
