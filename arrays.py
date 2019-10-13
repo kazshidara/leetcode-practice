@@ -97,7 +97,7 @@ def get_majority(nums):
 
 ################################################################################
 
-# 6. Find all NUmbers Disappeared 
+# 6. Find all Numbers Disappeared 
 
 # Given an array of integers where 1 ≤ a[i] ≤ n (n = size of array), some elements appear twice and others appear once.
 
@@ -130,6 +130,23 @@ def fcn(nums):
 
 ################################################################################
 
+#  7. TWO SUM
 
+# Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+# You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+def two_sum(nums, target):
+
+    # add the numbers in the dictionary as you iterate through the numbers  
+    num_dict = {}
+
+    for i, num in enumerate(nums):
+        m = target - num
+        if m in num_dict:
+            return [num_dict[m], i]
+        else:
+            num_dict[num] = i
+
+print(two_sum([3,2,4],6))
 
 
