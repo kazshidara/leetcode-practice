@@ -147,6 +147,75 @@ def two_sum(nums, target):
         else:
             num_dict[num] = i
 
-print(two_sum([3,2,4],6))
 
+################################################################################
+
+#  8. MAXIMUM SUBARRAY
+
+# Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
+
+# Example:
+
+# Input: [-2,1,-3,4,-1,2,1,-5,4],
+# Output: 6
+# Explanation: [4,-1,2,1] has the largest sum = 6
+
+def max_subarray(nums):
+
+    max_sum = max(nums)
+    curr_sum = 0
+
+    for num in nums:
+        curr_sum += num
+        max_sum = max(max_sum, curr_sum)
+
+        if curr_sum < 0:
+            curr_sum = 0
+    return max_sum
+
+
+################################################################################
+
+#  9. Minimum Index Sum of Two Lists
+
+# Suppose Andy and Doris want to choose a restaurant for dinner, and they both have 
+# a list of favorite restaurants represented by strings. You need to help them find 
+# out their common interest with the least list index sum. If there is a choice tie
+#  between answers, output all of them with no order requirement. You could assume 
+#  there always exists an answer.
+
+def findRestaurant(list1, list2):
+    """
+        :type list1: List[str]
+        :type list2: List[str]
+        :rtype: List[str]
+    """
+        
+    set1 = set(list1)
+    set2 = set(list2)
+    same_set = set1 & set2
+    print("Similar set values", same_set)
+    if not same_set:
+        return []
+    elif len(same_set) == 1:
+        return list(same_set)
+    elif len(same_set) > 1:
+        same_dict = {}
+        for i1,res1 in enumerate(list1):
+            if res1 in same_set:
+                same_dict[res1] = same_dict.get(res1, 0) + i1
+        for i2, res2 in enumerate(list2):
+            if res2 in same_set:
+                same_dict[res2] += i2
+        min_value = min(same_dict.values())
+        print(min_value)
+        return [key for key in same_dict.keys() if same_dict[key] == min_value]
+
+
+        # for i2,res2 in enumerate(list2):
+
+
+
+# print(findRestaurant(["Shogun", "Tapioca Express", "Burger King", "KFC"],["Piatti", "The Grill at Torrey Pines", "Hungry Hunter Steakhouse", "Shogun"]))
+# print(findRestaurant(["Shogun", "Tapioca Express", "Burger King", "KFC"],["KFC", "Shogun", "Burger King"]))
 
