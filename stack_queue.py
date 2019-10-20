@@ -61,3 +61,32 @@ class MyQueue(object):
 
 ################################################################################
 
+# 2.  Balanced Brackets
+
+# Complete the function isBalanced in the editor below. 
+# It must return a string: YES if the sequence is balanced or NO if it is not.
+
+
+def is_balanced(s):
+    stack = []
+    d = {'}':'{',
+         ']': '[',
+         ')': '('
+    }
+
+    for char in s:
+        if char in d.values():
+            stack.append(char)
+        elif char in d.keys():
+            if stack == [] or d[char] != stack.pop():
+                return "NO"
+        else:
+            return "NO"
+
+
+    if stack == []:
+        return "YES"
+    else:
+        return "NO"
+
+

@@ -194,7 +194,7 @@ def findRestaurant(list1, list2):
     set1 = set(list1)
     set2 = set(list2)
     same_set = set1 & set2
-    print("Similar set values", same_set)
+    
     if not same_set:
         return []
     elif len(same_set) == 1:
