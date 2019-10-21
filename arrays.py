@@ -219,3 +219,46 @@ def findRestaurant(list1, list2):
 # print(findRestaurant(["Shogun", "Tapioca Express", "Burger King", "KFC"],["Piatti", "The Grill at Torrey Pines", "Hungry Hunter Steakhouse", "Shogun"]))
 # print(findRestaurant(["Shogun", "Tapioca Express", "Burger King", "KFC"],["KFC", "Shogun", "Burger King"]))
 
+################################################################################
+
+# 10. New Year Chaos, number of swaps to get to sorted array 
+
+# Given an array of intergers, determine number swaps that it took to get array 
+# to sorted order
+#     --> 1 element cannot swap more than 2 times, if it does print "Too Chaotic"
+    
+
+def minimumBribes(q):
+
+    swaps = 0
+    d = {}
+
+    p1 = 0
+    p2 =1
+
+    while q != q.sort():
+
+        if q[p1] < q[p2]:
+            p1 += 1
+            p2 += 2
+
+        elif q[p1] > q[p2]:
+            swaps += 1
+            d.get(q[p1],0) + 1
+            print("Dictionaryyyy",d)
+            q[p1],q[p2] = q[p2],q[p1]
+            p1 += 1
+            p2 += 1
+        if p2 == len(q)-1:
+            p1 = 0
+            p2 = 1
+    for value in d.values():
+        if value > 2:
+            return "Too Chaotic"
+        else:
+            return swaps
+
+
+
+
+minimumBribes([2,5,1,3,4])
