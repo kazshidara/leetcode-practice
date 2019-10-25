@@ -262,3 +262,10 @@ def minimumBribes(q):
 
 
 minimumBribes([2,5,1,3,4])
+
+################################################################################
+
+# 11. Compare strings by freq of smallest character 
+
+def 
+
