@@ -261,11 +261,43 @@ def minimumBribes(q):
 
 
 
-minimumBribes([2,5,1,3,4])
 
 ################################################################################
 
 # 11. Compare strings by freq of smallest character 
 
-def 
+
+
+################################################################################
+
+# 12. Product of Array except Self 
+
+# Given an array nums of n integers where n > 1,  
+# return an array output such that output[i] is equal to the product of all
+#  the elements of nums except nums[i].
+
+# Test Case:  Input:  [1,2,3,4]
+#             Output: [24,12,8,6]
+
+def product_except_self(nums):
+
+    result = [1]*len(nums)
+    
+    product_left = 1
+    for i in range(1, len(nums)):
+        product_left *= nums[i-1]
+        result[i] *= product_left
+
+    product_right = 1
+    for i in range(len(nums)-2, -1,-1):
+        product_right = product_right * nums[i+1]
+        result[i] *= product_right 
+    return result
+
+
+# print(product_except_self([1,2,3,4]))
+
+
+
+
 
