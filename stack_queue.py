@@ -61,7 +61,7 @@ class MyQueue(object):
 
 ################################################################################
 
-# 2.  Balanced Brackets
+# 2.  Balanced Brackets  (HACKERRANK)
 
 # Complete the function isBalanced in the editor below. 
 # It must return a string: YES if the sequence is balanced or NO if it is not.
@@ -89,4 +89,19 @@ def is_balanced(s):
     else:
         return "NO"
 
+################################################################################
+
+# 3.  Game of 2 Stacks! (HACKERRANK)
+
+def game(lst_a, lst_b):
+
+
+
+
+
+    pass
+
+
+
+print(game([4,2,4,6,1],[2,1,8,5]))
 
