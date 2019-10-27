@@ -93,15 +93,35 @@ def is_balanced(s):
 
 # 3.  Game of 2 Stacks! (HACKERRANK)
 
-def game(lst_a, lst_b):
+# 14. Maximum Subarray Sum (HACKERRANK)
+
+def twoStacks(x, a, b):
+    
+    sum_ints = 0
+    num_ints = 0
+    pa = 0
+    pb = 0
+
+    while sum_ints <= x and (pa <=len(a) or pb <= len(b)):
+
+        popped = min(a[pa], b[pb])
+        print("popped value", popped)
+
+        if (sum_ints + popped) > x:
+            return num_ints
+
+        sum_ints += popped
+        print("sum of ints", sum_ints)
+
+        num_ints += 1
+        print("num of ints", num_ints)
+
+        if popped == a[pa]:
+            pa += 1
+        if popped == b[pb]:
+            pb += 1
+
+    return num_ints
 
 
-
-
-
-    pass
-
-
-
-print(game([4,2,4,6,1],[2,1,8,5]))
-
+print(twoStacks(10, [4,2,4,6,1],[2,1,8,5]))
