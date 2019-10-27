@@ -297,7 +297,41 @@ def product_except_self(nums):
 
 # print(product_except_self([1,2,3,4]))
 
+################################################################################
+
+# 13. Top K frequent words
 
 
+
+def top_freq_words(words, k):
+    _dict = {}
+    result = []
+        
+    for word in words:
+        if word in _dict:
+            _dict[word] += 1
+        else:
+            _dict[word] = 1
+
+    sorted_dict = Counter(_dict)
+    print(sorted_dict)
+    
+
+    array = sorted(_dict.items(), key=lambda x:x[1], reverse=True)
+
+    
+
+    for i in range(0,k):
+        result.append(array[i][0])
+    print(result)
+    
+
+
+print(top_freq_words(["i", "love", "leetcode", "i", "love", "coding"], 3))
+    
+
+################################################################################
+
+# 14. Maximum Subarray Sum (HACKERRANK)
 
 
