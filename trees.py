@@ -135,6 +135,48 @@ class Solution(object):
 ################################################################################
 
 
+# 5. No Prefix Set -- implementing a Trie 
+
+def no_prefix(words):
+
+    data = {}
+    done = False
+
+    for word in words:
+        if done:
+            break
+        current = data
+        print("current = data:",current)
+        for i, char in enumerate(word):
+            if char in current.keys():
+                if current[char] == 0 or i== len(word)-1:
+                    print("BAD SET")
+                    print(word)
+                    done = True
+                    break
+                else:
+                    current = current[char]
+                    print("current, inspecting keys: ", current)
+            else:
+                if i == len(word) - 1:
+                    current[char] = 0
+                else:
+                    current[char] = {}
+                    print("current:", current)
+                    current = current[char]
+                    print("current = current[char]:", current)
+
+    if not done:
+        print("GOOD SET")
+
+# bad set:
+# print(no_prefix(['aab','aac','aacghgh','aabghgh']))   
+
+# good set:
+print(no_prefix(['aab','defgab','abcde','cedaaa', 'bbbbbbbb', 'jabjjjad']))
+
+
+
 
 
 
