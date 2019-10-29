@@ -229,34 +229,7 @@ def findRestaurant(list1, list2):
     
 
 def minimumBribes(q):
-
-    swaps = 0
-    d = {}
-
-    p1 = 0
-    p2 =1
-
-    while q != q.sort():
-
-        if q[p1] < q[p2]:
-            p1 += 1
-            p2 += 2
-
-        elif q[p1] > q[p2]:
-            swaps += 1
-            d.get(q[p1],0) + 1
-            print("Dictionaryyyy",d)
-            q[p1],q[p2] = q[p2],q[p1]
-            p1 += 1
-            p2 += 1
-        if p2 == len(q)-1:
-            p1 = 0
-            p2 = 1
-    for value in d.values():
-        if value > 2:
-            return "Too Chaotic"
-        else:
-            return swaps
+    pass
 
 
 
@@ -333,4 +306,73 @@ def top_freq_words(words, k):
 ################################################################################
 
 
+# 14. Maximum Sub Array 
+
+def max_subarray(arr, m):
+    best = 0
+    mod_vals = [x % m for x in arr]
+    print("array:", arr)
+    print("mod_vals:", mod_vals)
+    running_totals = []
+
+    for i in range(len(mod_vals)):
+        if mod_vals[i] == m-1:
+            best = m-1
+            return best
+        if i > 0:
+            running_totals.append((mod_vals[i]+running_totals[i-1]) % m)
+            print("Running_totals:", running_totals)
+        else:
+            running_totals.append(mod_vals[i])
+            print("Running_totals:", running_totals)
+    print("Running_totals:", running_totals)
+
+    sorted_partials = sorted(running_totals)
+    print("sorted partials= sorted running totals:", sorted_partials)
+
+    position = {}
+    for i, x in enumerate(running_totals):
+        if x not in position:
+            position[x] = i
+    print("position dict:", position)
+
+    for i in range(1,len(sorted_partials)):
+        if best == m-1:
+            break
+
+        a, b = sorted_partials[i], sorted_partials[i-1]
+        print("a:", a)
+        print("b:", b)
+        best = max(best, a)
+        print("best", best)
+        if position[a] < position[b] and a != b:
+            best = max(best, (b-a) % m)
+            print("best", best)
+
+
+    return best
+
+
+# print(max_subarray([3,3,9,9,5],7))
+
+
+################################################################################
+
+
+# 15. Brick Wall
+import collections
+
+def leastBricks(wall):
+        
+    d=collections.defaultdict(int)
+    for w in wall:
+        cur=0
+        for v in w:     
+            cur+=v
+            d[cur]+=1
+        d[cur]-=1
+        print("final d:",d)
+    return len(wall)-max(d.values())
+
+# print(leastBricks([[1,2,2,1],[3,1,2],[1,3,2],[2,4],[3,1,2],[1,3,1,1]]))
 

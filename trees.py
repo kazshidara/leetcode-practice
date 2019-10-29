@@ -173,10 +173,10 @@ def no_prefix(words):
 # print(no_prefix(['aab','aac','aacghgh','aabghgh']))   
 
 # good set:
-print(no_prefix(['aab','defgab','abcde','cedaaa', 'bbbbbbbb', 'jabjjjad']))
+# print(no_prefix(['aab','defgab','abcde','cedaaa', 'bbbbbbbb', 'jabjjjad']))
 
 
 
-
+################################################################################
 
 
