@@ -384,32 +384,30 @@ def leastBricks(wall):
 
 def merge(intervals):
 
-    output_list = []
+    merged_list = []
 
-    while intervals:
+    for interval in intervals:
 
-        if len(intervals) == 1:
-            output_list.append(intervals.pop())
+        if not merged_list:
+            merged_list.append(intervals[0])
 
-        elif intervals[0][1] >= intervals[1][0]:
-            new_interval = [intervals[0][0], max(intervals[0][1],intervals[1][1])]
+        elif merged_list[-1][-1] < interval[0]:
+            merged_list.append(interval)
 
-            intervals = [new_interval] + intervals[2:]
+        else:
+            merged_list[-1][-1] = max(merged_list[-1][-1], interval[0])
 
-        elif intervals[0][1] < intervals[1][0]:
-            output_list.append(intervals.pop(0))
-            print("intervals list left:", intervals)
-
-        
-
-    return output_list
+    return merged_list
 
 
 
-print(merge([[1,3],[2,6],[8,10],[15,18]]))
+# print(merge([[1,3],[2,6],[8,10],[15,18]]))
 
 
-print(merge([[1,4],[4,5]]))
+# print(merge([[1,4],[4,5]]))
+
+################################################################################
 
 
+# 17. Merge Intervals
         
