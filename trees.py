@@ -146,7 +146,6 @@ def no_prefix(words):
         if done:
             break
         current = data
-        print("current = data:",current)
         for i, char in enumerate(word):
             if char in current.keys():
                 if current[char] == 0 or i== len(word)-1:
@@ -156,15 +155,12 @@ def no_prefix(words):
                     break
                 else:
                     current = current[char]
-                    print("current, inspecting keys: ", current)
             else:
                 if i == len(word) - 1:
                     current[char] = 0
                 else:
                     current[char] = {}
-                    print("current:", current)
                     current = current[char]
-                    print("current = current[char]:", current)
 
     if not done:
         print("GOOD SET")
@@ -179,4 +175,43 @@ def no_prefix(words):
 
 ################################################################################
 
+# Definition for a binary tree node.
+class TreeNode:
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
+
+class Solution:
+    def lowestCommonAncestor(root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1):
+    
+        if not root:
+            return None
+        stack = [root] 
+        parent = {root:None}
+        while stack:
+            cur = stack.pop()
+            if cur.right:
+                stack.append(cur.right)
+                parent[cur.right] = cur
+            if cur.left:
+                stack.append(cur.left)
+                parent[cur.left] = cur
+            if p in parent and q in parent:
+                break
+        print(parent)
+   
+        ancestor = set()
+        while p:
+            ancestor.add(p)
+            print("ancestor",ancestor)
+            p = parent[p]
+            print("p",p)
+        while q not in ancestor:
+            q = parent[q]
+            print("q",q)
+        return q
+
+
+print(lowestCommonAncestor())
 

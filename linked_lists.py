@@ -129,3 +129,45 @@ class Solution(object):
 
         sort_list.next = l1 or l2
         return head.next
+
+
+################################################################################
+
+#4.  Convert sorted linked list to Binary Search Tree
+
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+# Definition for a binary tree node.
+class TreeNode:
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
+
+class Solution:
+    def sortedListToBST(self, head: ListNode):
+
+        array = []
+
+        while head:
+            array.append(head.val)
+            head = head.next 
+
+        def build_tree(array):
+
+            mid = (len(array))/2
+
+            root = TreeNode(array[mid])
+
+            root.left = build_tree(array[:mid])
+            root.right = build_tree(array[mid + 1:])
+            
+            return root 
+
+        return build_tree(array)
+
+

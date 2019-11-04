@@ -35,3 +35,37 @@ def change(amount, coins) -> int:
 # print(change(5,[1,2,5]))
 
 ################################################################################
+
+# Letter combinations of a phone number (phone number --> letter)
+
+
+def letterCombinations(digits):
+    letters = { '2': 'abc', '3': 'def', '4': 'ghi', '5': 'jkl',
+                                 '6': 'mno', '7': 'pqrs', '8': 'tuv', '9':'wxyz' }       
+    result = []
+
+    def helper(digits, comb=""):
+
+        if digits == "":
+            if comb != "":
+                result.append(comb)
+                print(result)
+
+        else:
+
+            for letter in letters[digits[0]]:
+
+                helper(digits[1:], comb+letter)
+    helper(digits)
+    return result
+
+
+# print(letterCombinations("23"))
+
+
+################################################################################
+
+
+
+
+

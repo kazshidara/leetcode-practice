@@ -409,5 +409,157 @@ def merge(intervals):
 ################################################################################
 
 
-# 17. Merge Intervals
-        
+# 17. Meeting Rooms 
+    
+
+# def minMeetingRooms(intervals):
+
+#     counter = len(intervals)
+#     end_times = [interval[1] for interval in intervals]
+
+#     for interval in intervals:
+#         for time in end_times:
+#             if interval[0] >= endtime:
+#                 counter -= 1
+#             elif interval
+
+    
+
+################################################################################
+
+
+# 18. Num Islands 
+
+
+def dfs(grid,i,j):
+
+    if i<0 or i>=len(grid) or j<0 or j>=len(grid[i]) or grid[i][j] == '0':
+        return 0
+
+    grid[i][j] == '0'
+
+    dfs(grid,i+1,j)
+    dfs(grid,i-1,j)
+    dfs(grid,i,j+1)
+    dfs(grid,i,j-1)
+
+    return 1
+
+def number_islands(grid):
+
+    counter = 0
+
+    if len(grid) == 0 or grid == None:
+        return 0
+
+    for i in range(0,len(grid)):
+        for j in range(0,len(grid[i])):
+            if grid[i][j] == 1:
+                counter += dfs(grid,i,j)
+        return counter 
+
+
+# print(number_islands([[1,1,1,1,0],
+#                       [1,1,0,1,0],
+#                       [1,1,0,0,0],
+#                       [0,0,0,0,0]]))
+
+################################################################################
+
+
+# 19. Sub array Sum equals K
+
+# Given an array of integers and an integer k, you need to find the total number 
+# of continuous subarrays whose sum equals to k.
+
+# Input:nums = [1,1,1], k = 2
+# Output: 2
+
+
+
+
+def subarray_sum(nums, k):
+
+    current_sum = 0
+    counter = 0
+    nums.sort()
+    p1 = 0
+    p2 = 1
+
+    while p2 < len(nums):
+        current_sum += (nums[p1]+nums[p2])
+        print(current_sum)
+        if current_sum < k:
+            p2+=1
+            print(p1,p2)
+        elif current_sum == k:
+            counter += 1
+            p1 = p2
+            p2+=1
+            current_sum = 0
+            print(p1,p2)
+        else:
+            break
+
+    return counter 
+
+
+# print(subarray_sum([1,2,3],3))
+
+
+
+################################################################################
+
+# 20. Recursion problem from Corey 
+
+# Given an array of integers and an integer k, you need to return True if array 
+# can be split into 'k' subarrays and each subarray having same sum
+
+# Input:nums = [1,3,2], k = 2
+# Output: [1,2],[3] -- True 
+
+def helper(nums, result_array, target_sum, k):
+
+
+
+    if result_array == ([target_sum]*k):
+        return True 
+
+
+    for group in result_array:
+        print(group)
+        temp = group + nums[0]
+        print(temp)
+
+        if temp > target_sum:
+            continue 
+        elif temp <= target_sum:
+            result_array = result_array[group] + nums[0]
+            helper(nums[1:], result_array, target_sum,k)
+
+
+
+
+
+def k_subarrays(nums, k):
+
+    if sum(nums) % k != 0:
+        return False 
+
+    target_sum = (sum(nums))/k
+    result_array = [0] * k
+    print(result_array)
+
+    helper(nums, result_array, target_sum, k)
+
+
+
+print(k_subarrays([1,3,2],2))
+
+
+
+
+
+
+
+  
