@@ -538,7 +538,9 @@ def helper(nums, result_array, target_sum, k):
             helper(nums[1:], result_array, target_sum,k)
 
 
+################################################################################
 
+# 21. 
 
 
 def k_subarrays(nums, k):
@@ -554,7 +556,36 @@ def k_subarrays(nums, k):
 
 
 
-print(k_subarrays([1,3,2],2))
+# print(k_subarrays([1,3,2],2))
+
+
+
+################################################################################
+
+# 22. Search in rotated sorted array 
+
+def search(nums, target):
+
+    middle = int(len(nums)/2)
+    if target == nums[0]:
+        return 0
+    elif target == nums[middle]:
+        return middle
+    elif target > nums[0]:
+        new = nums[:(middle+1)]
+        print("num",new)
+    elif target < nums[0]:
+        print(middle+1)
+        new = nums[middle + 1:]
+        print("num",new)
+
+    
+    for i, num in enumerate(new):
+        if num == target:
+            return i
+
+
+print(search([4,5,6,7,0,1,2], 0))
 
 
 
@@ -562,4 +593,4 @@ print(k_subarrays([1,3,2],2))
 
 
 
-  
+

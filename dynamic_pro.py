@@ -16,18 +16,15 @@ def change(amount, coins) -> int:
             return 0
         
         dp = [0] * (amount + 1)
-        print("initial dp:", dp)
+       
         n = len(coins)
         
         dp[0] = 1
-        print(dp)
+
         for coin in coins:
             for i in range(1, amount + 1):
                 if i >= coin:
-                    print("i:", i, "A", coin)
                     dp[i] += dp[i - coin]
-                print(dp)
-        print("final dp:", dp)
         return dp[amount]
 
 
@@ -64,6 +61,40 @@ def letterCombinations(digits):
 
 
 ################################################################################
+
+
+# Maximum squares in a 2D array 
+
+def find_max_squares(matrix):
+
+    if len(matrix) == 0 or len(matrix[0]) == 0:
+            return 0
+    
+    for i in range(len(matrix)):
+        for j in range(len(matrix[i])):
+
+            if len(matrix) == 1 and len(matrix[0]) == 1 and matrix[0][0] == 1:
+                return 1
+
+            elif len(matrix) == 1 and len(matrix[0]) == 1 and matrix[0][0] == 0:
+                return 0
+
+    result = 0
+    squares = matrix.copy()
+    
+    for row in range(len(squares)):
+        for column in range(len(squares[row])):
+            if row == 0 or column == 0:
+                continue 
+            elif int(squares[row][column]) > 0:
+                squares[row][column] = 1 + min(int(squares[row-1][column]),int(squares[row][column-1]), int(squares[row-1][column-1]))
+            if int(squares[row][column]) > result:
+                result = int(squares[row][column])
+    return result*result 
+    
+
+# print(find_max_squares([[1]]))
+# print(find_max_squares([[0]]))
 
 
 
