@@ -564,28 +564,46 @@ def k_subarrays(nums, k):
 
 # 22. Search in rotated sorted array 
 
-def search(nums, target):
+def binary_search(nums, target):
 
-    middle = int(len(nums)/2)
-    if target == nums[0]:
-        return 0
-    elif target == nums[middle]:
-        return middle
-    elif target > nums[0]:
-        new = nums[:(middle+1)]
-        print("num",new)
-    elif target < nums[0]:
-        print(middle+1)
-        new = nums[middle + 1:]
-        print("num",new)
+    left = 0
+    right = len(nums) - 1
 
-    
-    for i, num in enumerate(new):
-        if num == target:
-            return i
+    while left < right: 
+        mid = int((left + right)/2)
+        if nums[mid] > nums[right]:
+            left = mid + 1
+        else:
+            right = mid
 
 
-print(search([4,5,6,7,0,1,2], 0))
+    start = left
+    left = 0
+    right = len(nums) - 1
+
+    if (target >= nums[start]) and (target <= nums[right]):
+        left = start 
+    else:
+        right = start
+
+# implement binary search by setting midpoint:
+    while left <= right:
+        middle = int((left + right)/2)
+
+        if nums[middle] == target:
+            return middle
+        elif nums[middle] > target:
+            right = middle 
+        else:
+            left = middle + 1
+
+    return -1 
+
+
+
+
+
+print(binary_search([4,5,6,7,0,1,2], 5))
 
 
 
