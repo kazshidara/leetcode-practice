@@ -185,7 +185,86 @@ class Solution:
 
     def make_copy(head):
 
+
+
+
+################################################################################        
+
+#6. LRU CACHE 
+
+
+# Class definition for doubly-linked list.
+
+
+class ListNode:
+    def __init__(self, key, value):
+        self.key = key
+        self.value = value
+        self.next = self
+        self.prev = self
+
+
+class LRUCache(ListNode):
+
+    def __init__(self, capacity: int):
+        self.dict = dict()
+        self.capacity = capacity 
+        self.head = ListNode(0,0)
+        self.tail = ListNode(-1,-1)
+        self.head.next = self.tail
+        self.tail.prev = self.head
+    
+
+    def get(self, key: int) -> int:
         
+        if key in self.dict:
+            node = self.dict[key]
+            self.remove_from_list(node)
+            self.insert_to_head(node)
+            return node.value    
+        else:
+            return -1
+
+    def put(self, key: int, value: int) -> None:
+        if key in self.dict:
+            node = self.dict[key]
+            self.remove_from_list(node)
+            self.insert_to_head(node)
+            node.value = value
+        else:
+            if len(self.dict) >= self.capacity:
+                self.remove_from_tail()
+            node = ListNode(key,value)
+            self.dict[node.key] = node
+            self.insert_to_head(node)
+    
+    
+    def insert_to_head(self, node):
+        headNext = self.head.next
+        self.head.next = node
+        node.prev = self.head
+        node.next = headNext
+        headNext.prev = node
+    
+    def remove_from_list(self,node):
+        node.prev.next = node.next
+        node.next.prev = node.prev
+    
+    def remove_from_tail(self):
+        """When we want to delete an item from dict"""
+        if len(self.dict) == 0:
+            return 
+        tailprev = self.tail.prev
+        self.remove_from_list(tailprev)
+        del self.dict[tailprev.key]
+        
+
+# Your LRUCache object will be instantiated and called as such:
+# obj = LRUCache(capacity)
+# param_1 = obj.get(key)
+# obj.put(key,value)
+
+
 
 
 
