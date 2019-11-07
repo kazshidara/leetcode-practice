@@ -96,7 +96,22 @@ def find_max_squares(matrix):
 # print(find_max_squares([[1]]))
 # print(find_max_squares([[0]]))
 
+################################################################################
 
+#Product of 2 strings 
+# not really DP but cool trick to write out alg. that multiplies 2 number strings together
 
+def multiply(num1:str, num2:str):
 
+    result = 0
+    carry1 = 1
+    for n1 in num1[::-1]:
+        carry2 = 1
+        for n2 in num2[::-1]:
+            result += int(n1)*int(n2)*carry1*carry2
+            carry2 *= 10
+        carry1 *= 10
+    return str(result)
+
+# print(multiply("123","456"))
 

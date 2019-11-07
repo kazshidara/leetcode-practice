@@ -170,4 +170,22 @@ class Solution:
 
         return build_tree(array)
 
+################################################################################        
+
+#5.  Make a Deep Copy of a Linked list that has Random Pointers 
+
+# Definition for singly-linked list.
+class Node:
+    def __init__(self, val, next, random):
+        self.val = val
+        self.next = next 
+        self.random = random
+
+class Solution: 
+
+    def make_copy(head):
+
+        
+
+
 
