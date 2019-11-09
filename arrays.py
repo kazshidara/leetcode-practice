@@ -605,7 +605,19 @@ def binary_search(nums, target):
 
 ################################################################################
 
-# 
+# 23. Compare Strings by Frequency of the Smallest Character
+
+def count_smallest_char(word):
+    count = 0
+    smallest = min(word)
+
+    for char in word: 
+        if char == smallest:
+            count += 1
+    return count 
+
+
+
 
 
 
